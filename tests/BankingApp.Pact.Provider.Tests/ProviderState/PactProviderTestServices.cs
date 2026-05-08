@@ -25,7 +25,7 @@ public static class PactProviderTestServices
 
         foreach (var impl in handlers)
         {
-            services.AddSingleton(handlerType, impl);
+            services.AddScoped(handlerType, impl);
         }
 
         services.AddScoped<TestDataSeeder>();
@@ -34,8 +34,7 @@ public static class PactProviderTestServices
 
     private static void AddMock<T>(IServiceCollection services) where T : class
     {
-        var mock = new Mock<T>();
-        services.AddSingleton(mock);
-        services.AddSingleton<T>(_ => mock.Object);
+        services.AddScoped(_ => new Mock<T>());
+        services.AddScoped<T>(sp => sp.GetRequiredService<Mock<T>>().Object);
     }
 }
