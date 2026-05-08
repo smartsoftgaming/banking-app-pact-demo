@@ -6,17 +6,18 @@ namespace BankinhApp.Pact.Provider.Tests;
 
 
 [Collection(BankingProviderPactCollection.Name)]
-public sealed class AccountProviderPactTests
+public sealed class BankingProviderPactTests
 {
     private const string PactBrokerUsername = "admin";
     private const string PactBrokerPassword = "admin";
     private const string ProviderStatesPath = "/provider-states";
     private const string ProviderName = "BankingProvider";
+
     private readonly BankingProviderFixture _fixture;
     private readonly ITestOutputHelper _output;
     private Uri BrokerUrl { get; } = new("http://localhost:9292");
 
-    public AccountProviderPactTests(BankingProviderFixture fixture, ITestOutputHelper output)
+    public BankingProviderPactTests(BankingProviderFixture fixture, ITestOutputHelper output)
     {
         _fixture = fixture;
         _output = output;
