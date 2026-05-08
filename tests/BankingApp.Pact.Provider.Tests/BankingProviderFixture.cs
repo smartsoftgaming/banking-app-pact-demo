@@ -36,7 +36,7 @@ public sealed class BankingProviderFixture : IAsyncLifetime
             await seeder.SetupAsync(request.State);
             return Results.Ok();
         });
-
+        
         _app.MapControllers();
 
         await _app.StartAsync();
