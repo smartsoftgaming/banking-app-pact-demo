@@ -5,6 +5,6 @@
     <Project Path="src/BankingApp.Core/BankingApp.Core.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/BankinhApp.Pact.Provider.Tests/BankinhApp.Pact.Provider.Tests.csproj" />
+    <Project Path="tests/BankingApp.Pact.Provider.Tests/BankingApp.Pact.Provider.Tests.csproj" />
   </Folder>
 </Solution>

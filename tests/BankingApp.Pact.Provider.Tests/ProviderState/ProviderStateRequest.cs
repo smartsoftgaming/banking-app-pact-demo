@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace BankinhApp.Pact.Provider.Tests.ProviderState;
+namespace BankingApp.Pact.Provider.Tests.ProviderState;
 
 public class ProviderStateRequest
 {

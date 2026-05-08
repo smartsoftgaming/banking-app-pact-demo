@@ -1,4 +1,4 @@
-﻿namespace BankinhApp.Pact.Provider.Tests.ProviderState;
+﻿namespace BankingApp.Pact.Provider.Tests.ProviderState;
 
 public interface IProviderStateHandler
 {

@@ -1,16 +1,17 @@
 ﻿using BankingApp.Api.Extensions;
-using BankinhApp.Pact.Provider.Tests.ProviderState;
+using BankingApp.Pact.Provider.Tests.ProviderState;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace BankinhApp.Pact.Provider.Tests;
+namespace BankingApp.Pact.Provider.Tests;
 
 public sealed class BankingProviderFixture : IAsyncLifetime
 {
     private WebApplication _app;
+    public const string ProviderStatesPath = "/provider-states";
 
-    public Uri ServerUri { get; } = new("http://127.0.0.1:9222");
+    public Uri ProviderUri { get; } = new("http://127.0.0.1:9222");
 
     public async Task InitializeAsync()
     {
@@ -19,10 +20,10 @@ public sealed class BankingProviderFixture : IAsyncLifetime
             EnvironmentName = "Testing"
         });
 
-        builder.WebHost.UseKestrel().UseUrls(ServerUri.ToString());
+        builder.WebHost.UseKestrel().UseUrls(ProviderUri.ToString());
 
         // Same registrations Production uses (controllers, JSON, middleware, ...).
-        builder.Services.AddAccountProviderCore();
+        builder.Services.AddProviderCore();
 
         // Mocked repositories + auto-discovered IProviderStateHandler implementations.
         builder.Services.AddPactProviderTestDoubles();
@@ -30,7 +31,7 @@ public sealed class BankingProviderFixture : IAsyncLifetime
         _app = builder.Build();
 
         // Test-only endpoint. Not present in Program.cs, so it never ships to Production.
-        _app.MapPost("/provider-states", async (ProviderStateRequest request, TestDataSeeder seeder) =>
+        _app.MapPost(ProviderStatesPath, async (ProviderStateRequest request, TestDataSeeder seeder) =>
         {
             await seeder.SetupAsync(request.State);
             return Results.Ok();

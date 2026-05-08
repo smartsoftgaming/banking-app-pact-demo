@@ -2,7 +2,7 @@
 using PactNet.Verifier;
 using Xunit.Abstractions;
 
-namespace BankinhApp.Pact.Provider.Tests;
+namespace BankingApp.Pact.Provider.Tests;
 
 
 [Collection(BankingProviderPactCollection.Name)]
@@ -10,12 +10,12 @@ public sealed class BankingProviderPactTests
 {
     private const string PactBrokerUsername = "admin";
     private const string PactBrokerPassword = "admin";
-    private const string ProviderStatesPath = "/provider-states";
-    private const string ProviderName = "BankingProvider";
+    private const string PactBrokerUrl = "http://localhost:9292";
+    private const string PactProviderName = "BankingProvider";
+    private const string ProviderVersion = "dev";
 
     private readonly BankingProviderFixture _fixture;
     private readonly ITestOutputHelper _output;
-    private Uri BrokerUrl { get; } = new("http://localhost:9292");
 
     public BankingProviderPactTests(BankingProviderFixture fixture, ITestOutputHelper output)
     {
@@ -29,13 +29,13 @@ public sealed class BankingProviderPactTests
         using var verifier = CreateVerifier();
 
         verifier
-            .WithHttpEndpoint(_fixture.ServerUri)
-            .WithPactBrokerSource(BrokerUrl, options =>
+            .WithHttpEndpoint(_fixture.ProviderUri)
+            .WithPactBrokerSource( new Uri(PactBrokerUrl), options =>
             {
                 options.BasicAuthentication(PactBrokerUsername, PactBrokerPassword);
-                options.PublishResults("dev");
+                options.PublishResults(ProviderVersion);
             })
-            .WithProviderStateUrl(new Uri(_fixture.ServerUri, ProviderStatesPath))
+            .WithProviderStateUrl(new Uri(_fixture.ProviderUri, BankingProviderFixture.ProviderStatesPath))
             .Verify();
     }
 
@@ -47,6 +47,6 @@ public sealed class BankingProviderPactTests
             LogLevel = PactLogLevel.Debug
         };
 
-        return new PactVerifier(ProviderName, config);
+        return new PactVerifier(PactProviderName, config);
     }
 }

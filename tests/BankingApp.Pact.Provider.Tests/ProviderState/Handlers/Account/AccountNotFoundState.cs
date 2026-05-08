@@ -2,7 +2,7 @@
 using BankingApp.Core.Interfaces;
 using BankingApp.Core.Entities;
 
-namespace BankinhApp.Pact.Provider.Tests.ProviderState.Handlers;
+namespace BankingApp.Pact.Provider.Tests.ProviderState.Handlers.Account;
 
 public sealed class AccountNotFoundState(Mock<IAccountRepository> accountRepositoryMock) : IProviderStateHandler
 {

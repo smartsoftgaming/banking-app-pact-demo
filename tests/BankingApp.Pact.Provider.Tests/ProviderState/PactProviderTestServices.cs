@@ -2,7 +2,7 @@
 using BankingApp.Core.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BankinhApp.Pact.Provider.Tests.ProviderState;
+namespace BankingApp.Pact.Provider.Tests.ProviderState;
 
 public static class PactProviderTestServices
 {

@@ -1,7 +1,7 @@
 ﻿using PactNet.Infrastructure.Outputters;
 using Xunit.Abstractions;
 
-namespace BankinhApp.Pact.Provider.Tests;
+namespace BankingApp.Pact.Provider.Tests;
 
 public  class XUnitOutput : IOutput
 {

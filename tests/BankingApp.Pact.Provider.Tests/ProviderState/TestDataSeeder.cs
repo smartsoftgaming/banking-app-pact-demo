@@ -1,7 +1,7 @@
 ﻿using BankingApp.Core.Interfaces;
 using Moq;
 
-namespace BankinhApp.Pact.Provider.Tests.ProviderState;
+namespace BankingApp.Pact.Provider.Tests.ProviderState;
 
 /// <summary>
 /// Resets all mocks before each provider state, then dispatches to the matching handler.

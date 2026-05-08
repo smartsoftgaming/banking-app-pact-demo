@@ -1,4 +1,4 @@
-﻿namespace BankinhApp.Pact.Provider.Tests;
+﻿namespace BankingApp.Pact.Provider.Tests;
 
 [CollectionDefinition(Name)]
 public sealed class BankingProviderPactCollection : ICollectionFixture<BankingProviderFixture>
