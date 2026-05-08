@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BankingApp.Api/BankingApp.Api.csproj" />
+    <Project Path="src/BankingApp.Application/BankingApp.Application.csproj" />
+    <Project Path="src/BankingApp.Core/BankingApp.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/BankinhApp.Pact.Provider.Tests/BankinhApp.Pact.Provider.Tests.csproj" />
+  </Folder>
+</Solution>
