@@ -4,20 +4,13 @@ using BankingApp.Core.Entities;
 
 namespace BankinhApp.Pact.Provider.Tests.ProviderState.Handlers;
 
-public sealed class AccountExistsForOverdraftState : IProviderStateHandler
+public sealed class AccountExistsForOverdraftState(Mock<IAccountRepository> accountRepositoryMock) : IProviderStateHandler
 {
-    private readonly Mock<IAccountRepository> _accountRepositoryMock;
-
-    public AccountExistsForOverdraftState(Mock<IAccountRepository> accountRepositoryMock)
-    {
-        _accountRepositoryMock = accountRepositoryMock;
-    }
-
     public string State => "account 1 exists for overdraft";
 
     public Task ApplyAsync()
     {
-        _accountRepositoryMock
+        accountRepositoryMock
             .Setup(r => r.GetById(1))
             .Returns(new AccountData
             {

@@ -4,20 +4,13 @@ using BankingApp.Core.Entities;
 
 namespace BankinhApp.Pact.Provider.Tests.ProviderState.Handlers;
 
-public sealed class AccountExistsForBalanceState : IProviderStateHandler
+public sealed class AccountExistsForBalanceState(Mock<IAccountRepository> accountRepositoryMock) : IProviderStateHandler
 {
-    private readonly Mock<IAccountRepository> _accountRepositoryMock;
-
-    public AccountExistsForBalanceState(Mock<IAccountRepository> accountRepositoryMock)
-    {
-        _accountRepositoryMock = accountRepositoryMock;
-    }
-
     public string State => "account 1 exists for balance";
 
     public Task ApplyAsync()
     {
-        _accountRepositoryMock
+        accountRepositoryMock
             .Setup(r => r.GetById(1))
             .Returns(new AccountData
             {

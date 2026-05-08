@@ -4,20 +4,13 @@ using BankingApp.Core.Entities;
 
 namespace BankinhApp.Pact.Provider.Tests.ProviderState.Handlers;
 
-public sealed class UserExistsState : IProviderStateHandler
+public class UserExistsState(Mock<IUserRepository> userRepositoryMock) : IProviderStateHandler
 {
-    private readonly Mock<IUserRepository> _userRepositoryMock;
-
-    public UserExistsState(Mock<IUserRepository> userRepositoryMock)
-    {
-        _userRepositoryMock = userRepositoryMock;
-    }
-
     public string State => "user exists";
 
     public Task ApplyAsync()
     {
-        _userRepositoryMock
+        userRepositoryMock
             .Setup(r => r.GetById(1))
             .Returns(new UserData
             {
