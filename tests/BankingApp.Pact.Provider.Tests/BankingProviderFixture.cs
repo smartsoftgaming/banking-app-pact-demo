@@ -15,10 +15,7 @@ public sealed class BankingProviderFixture : IAsyncLifetime
 
     public async Task InitializeAsync()
     {
-        var builder = WebApplication.CreateBuilder(new WebApplicationOptions
-        {
-            EnvironmentName = "Testing"
-        });
+        var builder = WebApplication.CreateBuilder();
 
         builder.WebHost.UseKestrel().UseUrls(ProviderUri.ToString());
 
