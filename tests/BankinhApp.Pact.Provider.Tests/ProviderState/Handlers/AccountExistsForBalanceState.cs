@@ -1,9 +1,8 @@
 ﻿using Moq;
-using BankinhApp.Pact.Provider.Tests.ProviderState;
 using BankingApp.Core.Interfaces;
 using BankingApp.Core.Entities;
 
-namespace AccountService.Pact.Provider.Tests.ProviderState.Handlers;
+namespace BankinhApp.Pact.Provider.Tests.ProviderState.Handlers;
 
 public sealed class UserExistsState : IProviderStateHandler
 {
