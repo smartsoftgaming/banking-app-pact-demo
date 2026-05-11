@@ -11,7 +11,7 @@ public sealed class BankingProviderPactTests
     private const string PactBrokerUsername = "admin";
     private const string PactBrokerPassword = "admin";
     private const string PactBrokerUrl = "http://localhost:9292";
-    private const string PactProviderName = "AccountProvider";
+    private const string PactProviderName = "BankingAppProvider";
     private const string ProviderVersion = "dev";
 
     private readonly BankingProviderFixture _fixture;
