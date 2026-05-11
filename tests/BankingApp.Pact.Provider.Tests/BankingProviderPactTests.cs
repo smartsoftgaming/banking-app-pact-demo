@@ -43,7 +43,7 @@ public sealed class BankingProviderPactTests
     {
         var config = new PactVerifierConfig
         {
-            Outputters = new[] { new XUnitOutput(_output) },
+            Outputters = [new XUnitOutput(_output)],
             LogLevel = PactLogLevel.Debug
         };
 
