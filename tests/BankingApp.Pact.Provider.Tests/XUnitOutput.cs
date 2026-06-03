@@ -3,7 +3,7 @@ using Xunit.Abstractions;
 
 namespace BankingApp.Pact.Provider.Tests;
 
-public  class XUnitOutput : IOutput
+public class XUnitOutput : IOutput
 {
     private readonly ITestOutputHelper _output;
 

@@ -2,19 +2,25 @@
 using BankingApp.Core.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace BankingApp.Pact.Provider.Tests.ProviderState;
 
 public static class PactProviderTestServices
 {
     /// <summary>
-    /// Registers everything the Pact provider test host needs: mocked repositories
-    /// (both as <c>Mock&lt;T&gt;</c> and <c>T</c>), all <see cref="IProviderStateHandler"/>
-    /// implementations from this assembly, and the dispatcher.
+    /// Registers the dependencies used by Pact provider tests,
+    /// including repository mocks and provider state handlers.
     /// </summary>
+
     public static IServiceCollection AddPactProviderTestDoubles(this IServiceCollection services)
     {
         AddMock<IAccountRepository>(services);
         AddMock<IUserRepository>(services);
+
+        //services.AddSingleton<IProviderStateHandler, AccountExistsForBalanceState>();
+        //services.AddSingleton<IProviderStateHandler, AccountExistsForOverdraftState>();
+        //services.AddSingleton<IProviderStateHandler, UserExistsState>();
+        //services.AddSingleton<IProviderStateHandler, AccountNotFoundState>();
 
         // Auto-discover every IProviderStateHandler in this test assembly.
         // Adding a new state = create one new handler class. No registration needed.

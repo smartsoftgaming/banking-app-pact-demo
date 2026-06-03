@@ -15,8 +15,8 @@ public class UserExistsState(Mock<IUserRepository> userRepositoryMock) : IProvid
             .Returns(new UserData
             {
                 UserId = 1,
-                Username = "giorgi",
-                Email = "giorgi@test.com"
+                UserName = "test",
+                Email = "test@test.com"
             });
 
         return Task.CompletedTask;

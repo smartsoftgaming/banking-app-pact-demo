@@ -30,7 +30,7 @@ public sealed class UsersController : ControllerBase
         return Ok(new UserResponse
         {
             UserId = user.UserId,
-            Username = user.Username,
+            UserName = user.UserName,
             Email = user.Email,
         });
     }
