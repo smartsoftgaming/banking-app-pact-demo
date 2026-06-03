@@ -30,7 +30,7 @@ public sealed class BankingProviderPactTests
 
         verifier
             .WithHttpEndpoint(_fixture.ProviderUri)
-            .WithPactBrokerSource( new Uri(PactBrokerUrl), options =>
+            .WithPactBrokerSource(new Uri(PactBrokerUrl), options =>
             {
                 options.BasicAuthentication(PactBrokerUsername, PactBrokerPassword);
                 options.PublishResults(ProviderVersion);
